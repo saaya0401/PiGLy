@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WeightLogController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WeightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,10 @@ use App\Http\Controllers\WeightLogController;
 |
 */
 
+Route::post('/register/step1', [UserController::class, 'storeUser']);
+Route::post('/register/step2', [WeightController::class, 'storeWeight']);
 Route::middleware('auth')->group(function(){
-    Route::get('/weight_logs', [WeightLogController::class, 'admin']);
+    Route::get('/weight_logs', [WeightController::class, 'admin']);
+    Route::get('/register/step2', [WeightController::class, 'weight']);
 });
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);

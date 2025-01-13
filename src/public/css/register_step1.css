@@ -1,15 +1,15 @@
-.login__content {
+.register__content {
     background: #fff;
     padding: 40px;
     border-radius: 30px;
     border: none;
 }
 
-.login-form__heading {
+.register-form__heading {
     text-align: center;
 }
 
-.login-form__heading-title {
+.register-form__heading-title {
     margin: 0;
     color: #EC87EF;
     font-family: "Lora";
@@ -17,13 +17,17 @@
     font-size: 60px;
 }
 
-.login-form__heading-subtitle {
+.register-form__heading-subtitle {
     margin: 0;
     font-family: "游明朝", "Yu Mincho", "Hiragino Mincho Pro", "MS Mincho", serif;
     font-size: 30px;
 }
 
-.login-form {
+.register-form__heading-step {
+    font-size: 16px;
+}
+
+.register-form {
     margin: 30px 0;
 }
 
@@ -48,7 +52,7 @@
     border-radius: 5px;
 }
 
-.form__input--text input::placeholder {
+.form__input--text input::placeholder{
     color: #CDCDCD;
 }
 
@@ -75,7 +79,7 @@
     cursor: pointer;
 }
 
-.register__button-submit {
+.login__button-submit {
     color: #2C99FF;
     line-height: 20px;
     font-size: 16px;
@@ -87,7 +91,7 @@
     text-decoration-thickness: 1px;
 }
 
-.register__link {
+.login__link {
     margin: 0 auto;
     width: 200px;
     text-align: center;

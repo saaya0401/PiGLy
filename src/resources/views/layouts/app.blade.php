@@ -16,14 +16,14 @@
                 <ul class="header__list">
                     <li class="header__list-item">
                         <form action="/" class="header__form" method="post">
-                            @form
+                            @csrf
                             <button class="header__form--target-weight">目標体重設定</button>
                         </form>
                     </li>
                     <li class="header__list-item">
                         <form action="/logout" class="header__form" method="post">
                             @csrf
-                            <button class="header__form--logout">ログアウト</button>
+                            <button class="header__form--logout" type="submit">ログアウト</button>
                         </form>
                     </li>
                 </ul>
