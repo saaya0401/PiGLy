@@ -18,6 +18,7 @@ use App\Http\Controllers\WeightController;
 
 Route::post('/register/step1', [UserController::class, 'storeUser']);
 Route::post('/register/step2', [WeightController::class, 'storeWeight']);
+Route::post('/login', [UserController::class, 'loginUser']);
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs', [WeightController::class, 'admin']);
     Route::get('/register/step2', [WeightController::class, 'weight']);
