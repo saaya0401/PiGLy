@@ -10,7 +10,7 @@
         <h1 class="login-form__heading-title">PiGLy</h1>
         <h2 class="login-form__heading-subtitle">ログイン</h2>
     </div>
-    <form class="login-form" action="/login" method="post">
+    <form class="login-form" action="/login" method="post" novalidate>
         @csrf
         <div class="form__group">
             <div class="form__group-title">
@@ -18,7 +18,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="email" name="email" value="{{ old('email') }}" >
+                    <input type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレスを入力">
                 </div>
                 <div class="form__error">
                     @error('email')
@@ -33,7 +33,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="password" name="password" />
+                    <input type="password" name="password" placeholder="パスワードを入力"/>
                 </div>
                 <div class="form__error">
                     @error('password')
