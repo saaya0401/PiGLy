@@ -46,7 +46,7 @@
                     <button class="weight-form__search--button" type="submit">検索</button>
                 </form>
                 <div class="weight-logs__create">
-                    <a class="weight-logs__create--button" href="/weight_logs/create">データ追加</a>
+                    @livewire('modal')
                 </div>
             </div>
             <table class="weight-logs__table">
@@ -74,7 +74,12 @@
                         {{$weightLog->exercise_time}}
                     </td>
                     <td class="weight-logs__table--content">
-                        <img src="/image/pen.png" alt="">
+                        <form action="/weight_logs/" method="post" class="weight-logs__table--form">
+                            <input type="hidden" name="id" value="{{$weightLog->id}}">
+                            <button class="weight-logs__table--button" type="submit">
+                                <img src="/image/pen.png" alt="詳細">
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
