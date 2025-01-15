@@ -1,0 +1,219 @@
+.content {
+    margin: 30px;
+}
+
+.heading {
+    display: flex;
+    width: 1120px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.heading__title {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.heading__number {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.heading__kg {
+    font-size: 16px;
+}
+
+.heading__group {
+    width: 230px;
+}
+
+.heading__group:last-child {
+    border: none;
+    padding-right: 0;
+}
+
+.line {
+    height: 70px;
+    width: 1px;
+    background-color: #CDCDCD;
+}
+
+.weight-logs {
+    width: 1120px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pagination {
+    height: 30px;
+    width: 200px;
+    margin: 20px auto 0;
+}
+
+.weight-logs__menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    align-items: center;
+    height: 43px;
+}
+
+.weight-form__search {
+    width: 200px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.weight-form__search-input {
+    width: 100%;
+    font-size: 16px;
+    color: #4B4B4B;
+    padding: 10px;
+    appearance: none;
+    border: 1px solid #E0DFDE;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.weight-form__search-input::-webkit-calendar-picker-indicator {
+    z-index: 10;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+}
+
+.weight-form__search::after {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    content: "";
+    transform: translate(0, -50%);
+    background: url("/image/Polygon2.png") no-repeat;
+    width: 14px;
+    height: 8px;
+    z-index: 0;
+}
+
+.calender-between {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.weight-form__search--button {
+    cursor: pointer;
+    background-color: #919191;
+    width: 100px;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.weight-logs__form {
+    display: flex;
+    align-items: center;
+}
+
+.weight-logs__create {
+    width: 160px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #A3A6E1, #FFABD9);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.weight-logs__create--button {
+    text-decoration: none;
+    padding: 7.5px 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.weight-logs__table--row:first-child {
+    background-color: #fff;
+    position: relative;
+    border: none;
+}
+
+.weight-logs__table--row:first-child::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #A3A6E1, #FFABD9);
+}
+
+.weight-logs__table--header-date {
+    padding: 18px 40px;
+    width: 300px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weight-logs__table--header-weight {
+    padding: 18px 40px;
+    width: 200px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weight-logs__table--header-calory {
+    padding: 18px 40px;
+    width: 260px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weight-logs__table--header-activity {
+    padding: 18px 40px;
+    width: 200px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weight-logs__table--header-blank {
+    padding: 18px 40px;
+    width: 100px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weight-logs__table--content {
+    padding: 18px 40px;
+    font-size: 16px;
+    text-align: left;
+}
+
+.weight-logs__table--row:last-child {
+    background-color: #F7F7F7;
+    border: none;
+}
+
+.weight-logs__table--row {
+    border-bottom: 1px solid #F7F7F7;
+}
