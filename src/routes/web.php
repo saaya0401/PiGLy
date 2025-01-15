@@ -24,3 +24,4 @@ Route::middleware('auth')->group(function(){
     Route::get('/register/step2', [WeightController::class, 'weight']);
 });
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+Route::get('/', [WeightController::class, 'admin']);
