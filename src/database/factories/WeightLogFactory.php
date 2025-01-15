@@ -16,10 +16,10 @@ class WeightLogFactory extends Factory
     {
         return [
             'user_id'=>1,
-            'date'=>$this->faker->date('Y/m/d'),
+            'date'=>$this->faker->date('Y-m-d'),
             'weight'=>$this->faker->randomFloat(1, 30.0, 200.0),
             'calories'=>$this->faker->numberBetween(100, 3000),
-            'exercise_time'=>$this->faker->time('H:i'),
+            'exercise_time'=>$this->faker->time('H:i:s'),
             'exercise_content'=>$this->faker->sentence()
         ];
     }

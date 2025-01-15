@@ -50,12 +50,6 @@
     border-radius: 10px;
 }
 
-.pagination {
-    height: 30px;
-    width: 200px;
-    margin: 20px auto 0;
-}
-
 .weight-logs__menu {
     display: flex;
     justify-content: space-between;
@@ -174,7 +168,7 @@
 .weight-logs__table--header-weight {
     padding: 18px 40px;
     width: 200px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     font-weight: 600;
 }
@@ -182,7 +176,7 @@
 .weight-logs__table--header-calory {
     padding: 18px 40px;
     width: 260px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     font-weight: 600;
 }
@@ -190,7 +184,7 @@
 .weight-logs__table--header-activity {
     padding: 18px 40px;
     width: 200px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     font-weight: 600;
 }
@@ -206,6 +200,10 @@
 .weight-logs__table--content {
     padding: 18px 40px;
     font-size: 16px;
+    text-align: center;
+}
+
+.weight-logs__table--content:first-of-type{
     text-align: left;
 }
 
@@ -216,4 +214,51 @@
 
 .weight-logs__table--row {
     border-bottom: 1px solid #F7F7F7;
+}
+
+.pagination {
+    height: 35px;
+    width: 500px;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.previous,
+.active,
+.other,
+.next {
+    padding: 3px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    width: 33px;
+}
+
+.previous,
+.active,
+.other {
+    margin-right: 10px;
+}
+
+.previous,
+.other,
+.next {
+    background-color: #fff;
+}
+
+.pagination-link,
+.other a {
+    text-decoration: none;
+    color: #4B4B4B;
+}
+
+.active {
+    background: linear-gradient(90deg, #A3A6E1, #FFABD9);
+}
+
+.active span {
+    color: #fff;
 }

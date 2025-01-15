@@ -10,7 +10,7 @@
         <div class="heading__group">
             <h5 class="heading__title">目標体重</h5>
             <div class="heading__number">
-                45.0
+                {{$weightTarget->target_weight}}
                 <span class="heading__kg">kg</span>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="heading__group">
             <h5 class="heading__title">目標まで</h5>
             <div class="heading__number">
-                -1.5
+                {{$weightTarget->target_weight - $weightLogs->first()->weight}}
                 <span class="heading__kg">kg</span>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="heading__group">
             <h5 class="heading__title">最新体重</h5>
             <div class="heading__number">
-                46.5
+                {{$weightLogs->first()->weight}}
                 <span class="heading__kg">kg</span>
             </div>
         </div>
@@ -37,11 +37,11 @@
                 <form action="/weight_logs/search" class="weight-logs__form" method="get">
                     @csrf
                     <div class="weight-form__search">
-                        <input type="date" class="weight-form__search-input" name="date" value="4444-33-22">
+                        <input type="date" class="weight-form__search-input" name="date_start" placeholder="開始日">
                     </div>
                     <span class="calender-between">〜</span>
                     <div class="weight-form__search">
-                        <input type="date" class="weight-form__search-input" name="date" value="年/月/日">
+                        <input type="date" class="weight-form__search-input" name="date_end" placeholder="終了日">
                     </div>
                     <button class="weight-form__search--button" type="submit">検索</button>
                 </form>
@@ -57,61 +57,47 @@
                     <th class="weight-logs__table--header-activity">運動時間</th>
                     <th class="weight-logs__table--header-blank"></th>
                 </tr>
+                @foreach($weightLogs as $weightLog)
                 <tr class="weight-logs__table--row">
                     <td class="weight-logs__table--content">
-                        2023/11/26
+                        {{$weightLog->date}}
                     </td>
                     <td class="weight-logs__table--content">
-                        46.5kg
+                        {{$weightLog->weight}}
+                        <span class="weight-logs__table--content-unit">kg</span>
                     </td>
                     <td class="weight-logs__table--content">
-                        1220cal
+                        {{$weightLog->calories}}
+                        <span class="weight-logs__table--content-unit">cal</span>
                     </td>
                     <td class="weight-logs__table--content">
-                        00:15
+                        {{$weightLog->exercise_time}}
                     </td>
                     <td class="weight-logs__table--content">
                         <img src="/image/pen.png" alt="">
                     </td>
                 </tr>
-                <tr class="weight-logs__table--row">
-                    <td class="weight-logs__table--content">
-                        2023/11/26
-                    </td>
-                    <td class="weight-logs__table--content">
-                        46.5kg
-                    </td>
-                    <td class="weight-logs__table--content">
-                        1220cal
-                    </td>
-                    <td class="weight-logs__table--content">
-                        00:15
-                    </td>
-                    <td class="weight-logs__table--content">
-                        <img src="/image/pen.png" alt="">
-                    </td>
-                </tr>
-                <tr class="weight-logs__table--row">
-                    <td class="weight-logs__table--content">
-                        2023/11/26
-                    </td>
-                    <td class="weight-logs__table--content">
-                        46.5kg
-                    </td>
-                    <td class="weight-logs__table--content">
-                        1220cal
-                    </td>
-                    <td class="weight-logs__table--content">
-                        00:15
-                    </td>
-                    <td class="weight-logs__table--content">
-                        <img src="/image/pen.png" alt="">
-                    </td>
-                </tr>
+                @endforeach
             </table>
         </div>
         <div class="pagination">
-            
+            @if($weightLogs->onFirstPage())
+                    <div class="previous"><span >&lt;</span></div>
+                @else
+                    <div class="previous"><a class="pagination-link" href="{{$weightLogs->previousPageUrl()}}" rel="preview">&lt;</a></div>
+                @endif
+                @for($page=1; $page<= $weightLogs->lastPage(); $page++)
+                @if($weightLogs->currentPage()== $page)
+                    <div class="active"><span>{{$page}}</span></div>
+                @else
+                    <div class="other"><a href="{{$weightLogs->url($page)}}">{{$page}}</a></div>
+                @endif
+                @endfor
+                @if($weightLogs->hasMorePages())
+                    <div class="next"><a class="pagination-link" href="{{$weightLogs->nextPageUrl()}}" rel="next">&gt;</a></div>
+                @else
+                    <div class="next"><span>&gt;</span></div>
+                @endif
         </div>
     </div>
 </div>

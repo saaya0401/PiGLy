@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WeightLog;
 use App\Models\WeightTarget;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterWeightRequest;
 
@@ -31,6 +32,9 @@ class WeightController extends Controller
     }
 
     public function admin(){
-        return view('admin');
+        $userId=Auth::id();
+        $weightLogs=WeightLog::with('user')->where('user_id', $userId)->Paginate(8);
+        $weightTarget=WeightTarget::with('user')->where('user_id', $userId)->first();
+        return view('admin', compact('weightLogs', 'weightTarget'));
     }
 }
