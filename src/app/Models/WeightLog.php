@@ -29,4 +29,14 @@ class WeightLog extends Model
         }
         return Carbon::createFromFormat('H:i:s', $value)->format('H:i');
     }
+
+    public function scopeDateSearch($query, $startDate, $endDate){
+        if(!empty($startDate) && !empty($endDate)){
+            $query->whereBetween('date', [$startDate, $endDate]);
+        }elseif(!empty($startDate)){
+            $query->where('date', '>=', $startDate);
+        }elseif(!empty($endDate)){
+            $query->where('date', '<=', $endDate);
+        }
+    }
 }

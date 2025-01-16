@@ -22,5 +22,7 @@ Route::post('/login', [UserController::class, 'loginUser']);
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs', [WeightController::class, 'admin']);
     Route::get('/register/step2', [WeightController::class, 'weight']);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/weight_logs/search', [WeightController::class, 'search']);
+    Route::post('/weight_logs/create',[WeightController::class, 'store']);
 });
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
