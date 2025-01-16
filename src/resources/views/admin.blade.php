@@ -18,7 +18,7 @@
         <div class="heading__group">
             <h5 class="heading__title">目標まで</h5>
             <div class="heading__number">
-                {{$weightTarget->target_weight - $weightLogs->first()->weight}}
+                {{$weightTarget->target_weight - $latestWeightLog->weight}}
                 <span class="heading__kg">kg</span>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="heading__group">
             <h5 class="heading__title">最新体重</h5>
             <div class="heading__number">
-                {{$weightLogs->first()->weight}}
+                {{$latestWeightLog->weight}}
                 <span class="heading__kg">kg</span>
             </div>
         </div>
@@ -37,18 +37,29 @@
                 <form action="/weight_logs/search" class="weight-logs__form" method="get">
                     @csrf
                     <div class="weight-form__search">
-                        <input type="date" class="weight-form__search-input" name="date_start" placeholder="開始日">
+                        <input type="date" class="weight-form__search-input" name="start_date" value="{{old('start_date', request('start_date'))}}">
                     </div>
                     <span class="calender-between">〜</span>
                     <div class="weight-form__search">
-                        <input type="date" class="weight-form__search-input" name="date_end" placeholder="終了日">
+                        <input type="date" class="weight-form__search-input" name="end_date" value="{{old('end_date', request('end_date'))}}">
                     </div>
                     <button class="weight-form__search--button" type="submit">検索</button>
+                    @if($startDate || $endDate)
+                    <div class="weight-form__reset">
+                        <a href="/weight_logs" class="weight-form__reset-button">リセット</a>
+                    </div>
+                    @endif
                 </form>
                 <div class="weight-logs__create">
                     @livewire('modal')
                 </div>
             </div>
+            @if($startDate || $endDate)
+            <div class="weight-form__search-result">
+                {{$startDate ? \Carbon\Carbon::parse($startDate)->format('Y年m月d日') : ''}}〜{{$endDate ? \Carbon\Carbon::parse($endDate)->format('Y年m月d日') : ''}}の検索結果
+                <span class="weight-form__search-result--total">{{$weightLogs->total()}}件</span>
+            </div>
+            @endif
             <table class="weight-logs__table">
                 <tr class="weight-logs__table--row">
                     <th class="weight-logs__table--header-date">日付</th>

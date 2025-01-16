@@ -3,7 +3,7 @@
         データ追加
     </button>
 
-    @if($showModal)
+    @if($showModal || $errors->any())
         <div class="modal__background">
             <div class="modal">
                 <h2 class="modal-title">Weight Logを追加</h2>
@@ -15,7 +15,12 @@
                             <span class="modal-form__heading-required">必須</span>
                         </div>
                         <div class="modal-form__content-date">
-                            <input type="date" class="modal-form__input-date" name="date" value="{{now()->format('Y-m-d')}}">
+                            <input type="date" class="modal-form__input-date" name="date" value="{{old('date', now()->format('Y-m-d'))}}">
+                        </div>
+                        <div class="modal-error">
+                            @error('date')
+                            {{$message}}
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-form__group">
@@ -24,8 +29,13 @@
                             <span class="modal-form__heading-required">必須</span>
                         </div>
                         <div class="modal-form__content-unit">
-                            <input type="text" class="modal-form__input-weight" name="weight" placeholder="50.0">
+                            <input type="text" class="modal-form__input-weight" name="weight" placeholder="50.0" value="{{old('weight')}}">
                             <span class="modal-form__input-unit">kg</span>
+                        </div>
+                        <div class="modal-error">
+                            @error('weight')
+                            {{$message}}
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-form__group">
@@ -34,8 +44,13 @@
                             <span class="modal-form__heading-required">必須</span>
                         </div>
                         <div class="modal-form__content-unit">
-                            <input type="text" class="modal-form__input-calories" name="calories" placeholder="1200">
+                            <input type="text" class="modal-form__input-calories" name="calories" placeholder="1200" value="{{old('calories')}}">
                             <span class="modal-form__input-unit">cal</span>
+                        </div>
+                        <div class="modal-error">
+                            @error('calories')
+                            {{$message}}
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-form__group">
@@ -44,7 +59,12 @@
                             <span class="modal-form__heading-required">必須</span>
                         </div>
                         <div class="modal-form__content-time">
-                            <input type="time" class="modal-form__input-time" name="exercise_time" value="00:00">
+                            <input type="time" class="modal-form__input-time" name="exercise_time" value="{{old('exercise_time')}}">
+                        </div>
+                        <div class="modal-error">
+                            @error('exercise_time')
+                            {{$message}}
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-form__group">
@@ -52,7 +72,12 @@
                             <span class="modal-form__heading-name">運動内容</span>
                         </div>
                         <div class="modal-form__content">
-                            <textarea name="exercise_content" class="modal-form__textarea" placeholder="運動内容を追加"></textarea>
+                            <textarea name="exercise_content" class="modal-form__textarea" placeholder="運動内容を追加">{{old('exercise_content')}}</textarea>
+                        </div>
+                        <div class="modal-error">
+                            @error('exercise_content')
+                            {{$message}}
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-form__button">
