@@ -22,7 +22,11 @@ Route::post('/login', [UserController::class, 'loginUser']);
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs', [WeightController::class, 'admin']);
     Route::get('/register/step2', [WeightController::class, 'weight']);
+    Route::get('/weight_logs/goal_setting', [WeightController::class, 'goalSetting']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/weight_logs/search', [WeightController::class, 'search']);
     Route::post('/weight_logs/create',[WeightController::class, 'store']);
+    Route::get('/weight_logs/{weightLogId}', [WeightController::class, 'detail']);
+    Route::patch('/weight_logs/{weightLogId}/update', [WeightController::class, 'update']);
+    Route::delete('/weight_logs/{weightLogId}/delete', [WeightController::class, 'destroy']);
 });

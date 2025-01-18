@@ -19,7 +19,7 @@
             <nav class="header__nav">
                 <ul class="header__list">
                     <li class="header__list-item">
-                        <form action="/" class="header__form" method="post">
+                        <form action="/weight_logs/goal_setting" class="header__form" method="get">
                             @csrf
                             <button class="header__form--target">目標体重設定</button>
                         </form>
