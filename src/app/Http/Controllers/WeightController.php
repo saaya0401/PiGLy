@@ -42,6 +42,10 @@ class WeightController extends Controller
         return view('admin', compact('weightLogs', 'weightTarget', 'latestWeightLog', 'startDate', 'endDate'));
     }
 
+    public function goalSetting(){
+        return view('goal_setting');
+    }
+
     public function store(WeightLogRequest $request){
         $userId=Auth::id();
         $weightLogs=$request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
@@ -61,5 +65,21 @@ class WeightController extends Controller
         $latestWeightLog=WeightLog::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
         $weightTarget=WeightTarget::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
         return view('admin', compact('weightLogs', 'weightTarget', 'latestWeightLog', 'startDate', 'endDate'));
+    }
+
+    public function detail($weightLogId){
+        $weightLog=WeightLog::find($weightLogId);
+        return view('detail', compact('weightLog'));
+    }
+
+    public function update(WeightLogRequest $request, $weightLogId){
+        $weightLog=$request->only(['date', 'weight', 'exercise_time', 'exercise_content']);
+        WeightLog::find($weightLogId)->update($weightLog);
+        return redirect('/weight_logs');
+    }
+
+    public function destroy($weightLogId){
+        WeightLog::find($weightLogId)->delete();
+        return redirect('/weight_logs');
     }
 }

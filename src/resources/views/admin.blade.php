@@ -85,8 +85,8 @@
                         {{$weightLog->exercise_time}}
                     </td>
                     <td class="weight-logs__table--content">
-                        <form action="/weight_logs/" method="post" class="weight-logs__table--form">
-                            <input type="hidden" name="id" value="{{$weightLog->id}}">
+                        <form action="{{url('/weight_logs/' . $weightLog['id'])}}" method="get" class="weight-logs__table--form">
+                            @csrf
                             <button class="weight-logs__table--button" type="submit">
                                 <img src="/image/pen.png" alt="詳細">
                             </button>

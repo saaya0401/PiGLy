@@ -39,4 +39,8 @@ class WeightLog extends Model
             $query->where('date', '<=', $endDate);
         }
     }
+
+    protected $casts=[
+        'date'=>'date',
+    ];
 }

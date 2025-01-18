@@ -82,10 +82,10 @@
                     </div>
                     <div class="modal-form__button">
                         <div class="modal-form__button-back">
-                            <button class="modal-form__button-back__submit" wire:click="closeModal()" type="button">戻る</button>
+                            <button class="modal-form__button-back--submit" wire:click="closeModal()" type="button">戻る</button>
                         </div>
                         <div class="modal-form__button-create">
-                            <button class="modal-form__button-create__submit" type="submit">登録</button>
+                            <button class="modal-form__button-create--submit" type="submit">登録</button>
                         </div>
                     </div>
                 </form>
