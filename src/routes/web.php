@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/weight_logs', [WeightController::class, 'admin']);
     Route::get('/register/step2', [WeightController::class, 'weight']);
     Route::get('/weight_logs/goal_setting', [WeightController::class, 'goalSetting']);
+    Route::patch('/weight_logs/goal_setting', [WeightController::class, 'goalUpdate']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/weight_logs/search', [WeightController::class, 'search']);
     Route::post('/weight_logs/create',[WeightController::class, 'store']);
