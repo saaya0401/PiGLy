@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterWeightRequest;
 use App\Http\Requests\WeightLogRequest;
+use App\Http\Requests\WeightTargetRequest;
 
 class WeightController extends Controller
 {
@@ -43,7 +44,15 @@ class WeightController extends Controller
     }
 
     public function goalSetting(){
-        return view('goal_setting');
+        $userId=Auth::id();
+        $weightTarget=WeightTarget::with('user')->where('user_id', $userId)->first();
+        return view('goal_setting', compact('weightTarget'));
+    }
+
+    public function goalUpdate(WeightTargetRequest $request){
+        $weightTarget=$request->only(['target_weight']);
+        WeightTarget::find($request->id)->update($weightTarget);
+        return redirect('/weight_logs');
     }
 
     public function store(WeightLogRequest $request){
