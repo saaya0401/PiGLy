@@ -82,7 +82,7 @@ class WeightController extends Controller
     }
 
     public function update(WeightLogRequest $request, $weightLogId){
-        $weightLog=$request->only(['date', 'weight', 'exercise_time', 'exercise_content']);
+        $weightLog=$request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         WeightLog::find($weightLogId)->update($weightLog);
         return redirect('/weight_logs');
     }
